@@ -1,0 +1,21 @@
+{
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-styled-components"
+  ],
+  "rules": {
+    "no-eol-whitespace": [true, {
+      "ignore": "empty-lines"
+    }],
+    "no-descending-specificity": null,
+    "property-no-vendor-prefix": [true, {
+      "ignoreProperties": ["box-orient", "mask-image", "box-shadow", "-ms-text-size-adjust", "-moz-tab-size", "-webkit-text-size-adjust", "-webkit-appearance"],
+    }],
+    "value-no-vendor-prefix": [true, {
+      "ignoreValues": ["box"]
+    }]
+  }
+}
