@@ -35,6 +35,9 @@
     "sourceMap": true,
     "jsx": "preserve"
   },
+  "files": [
+    "src/types/global.d.ts"
+  ],
   "exclude": [
     "node_modules",
     ".next"

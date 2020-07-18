@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import * as React from 'react';
+import Link from 'next/link';
 
 export default function Home () {
   return (
     <div className='container'>
+      <Link href={'/order'}>order</Link>
+
       <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico'/>

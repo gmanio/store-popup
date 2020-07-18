@@ -31,3 +31,6 @@ yarn-error.log*
 .idea/
 package-lock.json
 yarn.lock
+next-env.d.ts
+.env
+.env
