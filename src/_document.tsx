@@ -37,9 +37,9 @@ export default class CustomizedDocument extends Document {
   render () {
     return (
       <Html>
-        {/*<head>*/}
-        {/*  <style/>*/}
-        {/*</head>*/}
+        <head>
+          <style/>
+        </head>
         <body>
         <Main/>
         <NextScript/>

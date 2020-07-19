@@ -3,6 +3,7 @@ import App from 'next/app';
 import React from 'react';
 import { NextRouter, Router } from 'next/router';
 import { AppContextType } from 'next/dist/next-server/lib/utils';
+import { UserContextProvider } from 'src/contexts/userContext';
 
 export type AppProps = {
   Component: NextComponentType<NextPageContext>;
@@ -27,11 +28,14 @@ export class MyApp extends App<AppProps> {
   }
 
   render () {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, userAgent } = this.props;
+    console.log(userAgent);
     return (
       <>
         <div style={{ paddingTop: 60, display: 'flex', width: '100%', background: '#f2f5f7', boxSizing: 'border-box' }}>
-          <Component {...pageProps}/>
+          <UserContextProvider>
+            <Component {...pageProps}/>
+          </UserContextProvider>
         </div>
       </>
     );

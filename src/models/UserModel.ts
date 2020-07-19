@@ -14,4 +14,6 @@ export default class UserModel {
   constructor (param?: UserModelParam) {
     Object.assign(this, param);
   }
+
+  public isLogin = () => this.kakaoId !== 0
 }

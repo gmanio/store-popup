@@ -1,5 +1,10 @@
 export declare global {
   interface Window {
-    Kakao: any;
+    Kakao: any & {
+      API: {
+        request: () => void;
+      }
+    };
+    kakaoAsyncInit: () => void;
   }
 }
