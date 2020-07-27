@@ -2,8 +2,9 @@ import { NextComponentType, NextPageContext } from 'next';
 import App from 'next/app';
 import React from 'react';
 import { NextRouter, Router } from 'next/router';
-import { AppContextType } from 'next/dist/next-server/lib/utils';
 import { UserContextProvider } from 'src/contexts/userContext';
+import { AppContextType } from 'next/dist/next-server/lib/utils';
+import * as process from 'process';
 
 export type AppProps = {
   Component: NextComponentType<NextPageContext>;
@@ -19,7 +20,7 @@ export class MyApp extends App<AppProps> {
   }
 
   static getInitialProps = async (initialProps: AppInitialProps) => {
-    let pageProps = {};
+    let pageProps = { kakaoApiKey: process.env.KAKAO_KEY };
 
     return {
       pageProps,
@@ -31,13 +32,9 @@ export class MyApp extends App<AppProps> {
     const { Component, pageProps, userAgent } = this.props;
     console.log(userAgent);
     return (
-      <>
-        <div style={{ paddingTop: 60, display: 'flex', width: '100%', background: '#f2f5f7', boxSizing: 'border-box' }}>
-          <UserContextProvider>
-            <Component {...pageProps}/>
-          </UserContextProvider>
-        </div>
-      </>
+      <UserContextProvider>
+        <Component {...pageProps}/>
+      </UserContextProvider>
     );
   }
 }

@@ -38,6 +38,7 @@ export default class CustomizedDocument extends Document {
     return (
       <Html>
         <head>
+          <script type='text/javascript' src='https://developers.kakao.com/sdk/js/kakao.min.js'/>
           <style/>
         </head>
         <body>
@@ -45,6 +46,6 @@ export default class CustomizedDocument extends Document {
         <NextScript/>
         </body>
       </Html>
-    );
+    )
   }
 }
