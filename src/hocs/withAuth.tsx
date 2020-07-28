@@ -10,7 +10,7 @@ const Kakao = !EnvironmentService.isServerSide() && window.Kakao;
 const withAuth = (WrappedComponent: NextComponentType | any) => {
 
   const AuthenticatedComponent = (authenticatedComponentProps: any) => {
-    const { user, setUser } = useAuth();
+    const [user, dispatchSetUser] = useAuth();
     const [isLoading, setIsLoading] = React.useState(true);
     const handleFailureLogin = () => {
       debugger;
@@ -20,13 +20,13 @@ const withAuth = (WrappedComponent: NextComponentType | any) => {
       window.Kakao.API.request({
         url: '/v2/user/me',
         success: (res: any) => {
-          const logginedUser = new UserModel({
+          const loggedInUser = new UserModel({
             kakaoId: res.id,
             email: res.kakao_account.email,
             name: res.kakao_account.profile.nickname,
             profile: res.kakao_account.profile.profile_image_url
           });
-          setUser(logginedUser);
+          dispatchSetUser({ type: 'set', payload: loggedInUser });
           setIsLoading(false);
         },
         fail: handleFailureLogin
@@ -46,7 +46,7 @@ const withAuth = (WrappedComponent: NextComponentType | any) => {
     return (
       <>
         {isLoading ? <div>loading login process..</div> : (
-          <WrappedComponent {...authenticatedComponentProps}/>
+          <WrappedComponent {...authenticatedComponentProps} />
         )}
       </>
     )

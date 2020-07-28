@@ -14,32 +14,27 @@ export type UserReducerActionType = {
 
 const UserContext = React.createContext({});
 
-// const initialState = null;
-//
-// // set up the reducer - same as Redux, allows us to process more complex changes
-// // to the state within the context API
-// const reducer = (state: (UserModel | null), action: UserReducerActionType) => {
-//   debugger;
-//   switch (action.type) {
-//     case 'set':
-//       return Object.assign(state, action.payload);
-//     case 'get':
-//       return state;
-//     default:
-//       throw new Error(`Unhandled action type: ${action.type}`)
-//   }
-// }
+const initialState = new UserModel();
+
+// set up the reducer - same as Redux, allows us to process more complex changes
+// to the state within the context API
+const reducer = (state: UserModel, action: UserReducerActionType) => {
+
+  switch (action.type) {
+    case 'set':
+      return Object.assign(state, action.payload);
+    case 'get':
+      return state;
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`)
+  }
+}
 
 const UserContextProvider: React.FC = ({ children }) => {
-  const [user, setUser] = React.useState(new UserModel());
-
-  React.useEffect(() => {
-    console.log(user);
-    debugger;
-  }, [user]);
+  const [user, dispatchSetUser] = React.useReducer(reducer, initialState);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={[ user, dispatchSetUser ]}>
       {children}
     </UserContext.Provider>
   );

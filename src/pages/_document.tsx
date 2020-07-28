@@ -3,20 +3,14 @@ import Document, { DocumentContext, DocumentInitialProps, Html, Main, NextScript
 import { ServerStyleSheet } from 'styled-components';
 
 export default class CustomizedDocument extends Document {
-  static async getInitialProps (context: DocumentContext): Promise<DocumentInitialProps> {
+  static async getInitialProps(context: DocumentContext): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = context.renderPage;
-    // const userAgent: string = context.req ? context.req.headers['user-agent']! : navigator.userAgent;
 
     try {
-      context.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: MyApp => props => sheet.collectStyles(
-            <>
-              <MyApp {...props}/>
-            </>
-          )
-        });
+      context.renderPage = () => originalRenderPage({
+        enhanceApp: MyApp => props => sheet.collectStyles(<MyApp {...props} />)
+      });
 
       const initialProps: DocumentInitialProps = await Document.getInitialProps(context);
 
@@ -34,16 +28,16 @@ export default class CustomizedDocument extends Document {
     }
   }
 
-  render () {
+  render() {
     return (
       <Html>
         <head>
-          <script type='text/javascript' src='https://developers.kakao.com/sdk/js/kakao.min.js'/>
-          <style/>
+          <script type='text/javascript' src='https://developers.kakao.com/sdk/js/kakao.min.js' />
+          <style />
         </head>
         <body>
-        <Main/>
-        <NextScript/>
+          <Main />
+          <NextScript />
         </body>
       </Html>
     )

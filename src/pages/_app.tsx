@@ -28,12 +28,11 @@ export class MyApp extends App<AppProps> {
     };
   }
 
-  render () {
+  render() {
     const { Component, pageProps, userAgent } = this.props;
-    console.log(userAgent);
     return (
       <UserContextProvider>
-        <Component {...pageProps}/>
+        <Component {...pageProps} userAgent={userAgent} />
       </UserContextProvider>
     );
   }
