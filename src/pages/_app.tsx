@@ -30,6 +30,7 @@ export class MyApp extends App<AppProps> {
 
   render() {
     const { Component, pageProps, userAgent } = this.props;
+
     return (
       <UserContextProvider>
         <Component {...pageProps} userAgent={userAgent} />

@@ -6,12 +6,10 @@ export default function Home () {
   return (
     <div className='container'>
       <a href={'/order'}>order</a>
-
       <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico'/>
       </Head>
-
       <main>
         <h1 className='title'>
           Welcome to <a href='https://nextjs.org'>Next.js!</a>

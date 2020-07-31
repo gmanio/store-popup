@@ -16,10 +16,7 @@ const UserContext = React.createContext({});
 
 const initialState = new UserModel();
 
-// set up the reducer - same as Redux, allows us to process more complex changes
-// to the state within the context API
 const reducer = (state: UserModel, action: UserReducerActionType) => {
-
   switch (action.type) {
     case 'set':
       return Object.assign(state, action.payload);
