@@ -1,4 +1,3 @@
-import * as React from 'react';
 import withAuth from 'src/hocs/withAuth';
 import { useAuth } from 'src/contexts/userContext';
 

@@ -7,13 +7,13 @@ export type UserModelParam = {
 
 export default class UserModel {
   readonly kakaoId: number = 0;
-  readonly profile: string = '';
-  readonly name: string = '';
-  readonly email: string = '';
+  readonly profile: string = "";
+  readonly name: string = "";
+  readonly email: string = "";
 
-  constructor (param?: UserModelParam) {
+  constructor(param?: UserModelParam) {
     Object.assign(this, param);
   }
 
-  public isLogin = () => this.kakaoId !== 0
+  public isLogin = () => this.kakaoId !== 0;
 }
