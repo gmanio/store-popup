@@ -37,15 +37,13 @@ const withAuth = (WrappedComponent: NextComponentType | any) => {
       if (authenticatedComponentProps.kakaoApiKey) {
         Kakao.init(authenticatedComponentProps.kakaoApiKey);
       }
-      setTimeout(() => {
-        Kakao.Auth.login({ success: handleSuccessLogin, fail: handleFailureLogin });
-      }, 3000);
-    }, [authenticatedComponentProps]);
 
+      Kakao.Auth.login({ success: handleSuccessLogin, fail: handleFailureLogin });
+    }, [authenticatedComponentProps]);
 
     return (
       <>
-        {isLoading ? <div>loading login process..</div> : (
+        {isLoading && user ? <div>loading login process..</div> : (
           <WrappedComponent {...authenticatedComponentProps} />
         )}
       </>

@@ -1,11 +1,5 @@
 import * as React from 'react';
 import UserModel from 'src/models/UserModel';
-import { Dispatch, SetStateAction } from 'react';
-
-export type UserContextProps = {
-  user: UserModel | null;
-  setUser: Dispatch<SetStateAction<any>>;
-};
 
 export type UserReducerActionType = {
   type: string;
@@ -31,13 +25,13 @@ const UserContextProvider: React.FC = ({ children }) => {
   const [user, dispatchSetUser] = React.useReducer(reducer, initialState);
 
   return (
-    <UserContext.Provider value={[ user, dispatchSetUser ]}>
+    <UserContext.Provider value={[user, dispatchSetUser]}>
       {children}
     </UserContext.Provider>
   );
 };
 
-const useAuth: any = () => React.useContext(UserContext);
+const useAuth = () => React.useContext(UserContext);
 
 export {
   UserContextProvider,
